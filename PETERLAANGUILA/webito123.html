@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>"Determinados Hasta No Poder"</title>
+
+<style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+
+      /* === FONDO QUE PEDISTE === */
+      background: url("https://preview.redd.it/ik-its-not-that-good-but-heres-a-frutiger-aero-background-i-v0-2ryt05p7sm0d1.jpeg?auto=webp&s=25113e5cf7db0cbf5d6e60b95dd467f9d287c494")
+        no-repeat center center fixed;
+      background-size: cover;
+
+      color: #003366;
+    }
+
+    header {
+        font-family: 'Trebuchet MS', Verdana, sans-serif;
+        letter-spacing: 1px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.25);
+        background: rgba(255, 255, 255, 0.35);
+        backdrop-filter: blur(12px) saturate(160%);
+        border: 1px solid rgba(255,255,255,0.45);
+        padding: 20px;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    nav button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #ffffff, #cfe9ff);
+      box-shadow: 0 4px 8px rgba(0, 80, 160, 0.25);
+      cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    nav button:hover {
+      transform: scale(1.05);
+      background: #009cd6;
+      box-shadow: 0 6px 14px rgba(0, 80, 160, 0.35);
+    }
+
+    .section {
+      margin: 40px auto;
+      padding: 30px;
+      width: 80%;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 30px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 6px 20px rgba(0, 70, 140, 0.25);
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .section:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 28px rgba(0, 70, 140, 0.35);
+    }
+
+    .icon {
+      width: 28px;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    /* === REPRODUCTOR DE MÚSICA === */
+    .music-player {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        backdrop-filter: blur(15px);
+        background: rgba(255, 255, 255, 0.25);
+        border-radius: 20px;
+        padding: 12px;
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+        border: 2px solid rgba(255, 255, 255, 0.35);
+        z-index: 9999;
+    }
+
+    .music-player audio {
+        width: 250px;
+        filter: drop-shadow(0px 0px 5px cyan);
+    }
+</style>
+
+</head>
+<body>
+
+<!-- === REPRODUCTOR DE MÚSICA === -->
+<div class="music-player">
+    <audio id="bgMusic" controls loop>
+        <source src="C:\Users\CHAVELI\OneDrive\Escritorio\PETERLAANGUILA\Live.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio HTML.
+    </audio>
+</div>
+
+<header>"Determinados Hasta No Poder"</header>
+
+<nav>
+    <button onclick="openSection('home')" onmouseover="playHover()"><img class="icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS92Pzh_B7pKAMp1VC9GD6BTqhFvQVOAVqkpQ&s">Inicio</button>
+    <button onclick="openSection('galeria')" onmouseover="playHover()"><img class="icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7DXN-P773h_TV0nQk7_TKOZVROo1uqMBAtQ&s">Galería</button>
+    <button onclick="openSection('info')" onmouseover="playHover()"><img class="icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOZiOyMEFKstAuXXkkESNFEcdbiSMz0dMtXw&s">Información</button>
+    <button onclick="openSection('contacto')" onmouseover="playHover()"><img class="icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1G7VlYkR3HtQ5DJCpnUWc9qi_C5JJGvbJfg&s">Contacto</button>
+</nav>
+
+<audio id="hoverSound">
+  <source src="https://files.catbox.moe/4r8j1n.mp3" type="audio/mpeg">
+</audio>
+
+<div id="home" class="section" style="display:block">
+    <h2>Valores Humanos</h2>
+<img src="https://s1.significados.com/foto/valores-humanos-og.jpg" style="width:100%; max-width:450px; border-radius:12px;" />
+    <p>Los valores humanos son principios éticos y morales que orientan la conducta, permiten la convivencia social y guían decisiones responsables. Actúan como criterios internos para distinguir lo correcto de lo incorrecto y ayudan a construir una vida plena, justa y respetuosa.</p>
+
+    <h3>Responsabilidad</h3>
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0eTlBxAmw0KYaUw50HDTmF-BkUnXl9pAnEXxUKh9GR980jTD0ewkvJE7lM9Uk3e7llbRUyTnBO4648kglsbivp1DtNmTT4gJ5cMAkBtKdLgVpJP_0UwqwzHsBx93Up9cxj4pOuZrsO3bq/s1600/ni%25C3%25B1o+estudioso.gif" style="width:100%; max-width:450px; border-radius:12px;" />
+    <p>La responsabilidad implica asumir las consecuencias de los actos, cumplir compromisos y actuar con madurez, prudencia y ética.</p>
+
+    <h3>Perseverancia</h3>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVforUktSKon7QUyor3i7jantDZ97iesXgVg&s" style="width:100%; max-width:450px; border-radius:12px;" />
+    <p>La perseverancia es la capacidad de continuar trabajando hacia una meta a pesar de obstáculos, dificultades o desánimo. Implica disciplina, constancia y determinación.</p>
+
+    <h3>Amistad</h3>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjaBkNNntaNs-b2TSUzGqIsFU9N9zRtupkgg&s" style="width:100%; max-width:450px; border-radius:12px;" />
+    <p>La amistad es un vínculo basado en confianza, apoyo, lealtad y afecto mutuo. Fomenta crecimiento personal, bienestar emocional y sentido de pertenencia.</p>
+
+    <h3>Amor</h3>
+    <img src="https://stjohns.mx/wp-content/uploads/2019/09/Valor-del-amor.jpg" style="width:100%; max-width:450px; border-radius:12px;" />
+    <p>El amor es un valor fundamental basado en afecto, empatía, cuidado y conexión profunda con otros seres humanos. Promueve vínculos duraderos y bienestar emocional.</p>
+
+    <h3>Honestidad</h3>
+    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b" style="width:100%; max-width:450px; border-radius:12px;" />
+    <p>La honestidad es actuar con transparencia, verdad y coherencia entre lo que se piensa, se dice y se hace. Promueve confianza y credibilidad.</p>
+
+    <h3>Fe</h3>
+    <img src="https://res.cloudinary.com/dop3jzeu3/images/f_auto,q_auto/v1734994563/Pag.-6-Foto-TAD-fe/Pag.-6-Foto-TAD-fe.png?_i=AA" style="width:100%; max-width:450px; border-radius:12px;" />
+    <p>La fe es la confianza profunda en algo o alguien, que brinda esperanza, estabilidad emocional y fortaleza para enfrentar la incertidumbre. No depende solo de evidencia, sino también de convicción interna.</p>
+
+    <h3>Respeto</h3>
+    <img src="https://i.pinimg.com/474x/4a/30/37/4a3037e35243b7fb914451fd437b5597.jpg" style="width:100%; max-width:450px; border-radius:12px;" />
+    <p>El respeto es reconocer la dignidad, derechos y valor de las personas, aceptando sus diferencias. Es esencial para la convivencia y para cualquier relación social equilibrada.</p>
+
+    <h3>Bondad</h3>
+    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c" style="width:100%; max-width:450px; border-radius:12px;" />
+    <p>La bondad es la disposición a hacer el bien, ayudar y actuar con generosidad sin esperar recompensas. Implica empatía, compasión y una actitud altruista.</p>
+</div>
+
+<div id="galeria" class="section">
+    <h2>Galería Fotográfica</h2>
+    <p>Los murales fotográficos son composiciones visuales grandes formadas por imágenes seleccionadas para comunicar una idea, narrar una historia, generar impacto emocional o decorar espacios. Se usan en educación, arte, diseño, publicidad y fotografía.</p>
+
+    <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXYZ6TikLP2_D3icVI3hQ3smaR3R7h29FRkw&s" style="width:280px; border-radius:12px;" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzvcL3pn_p2GLX-XHME61eQ7OpgKjB2hRGVg&s" style="width:280px; border-radius:12px;" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToJQt0vRklvesm-jpmqp9jN78OPffYHxa57Q&s" style="width:280px; border-radius:12px;" />
+    </div>
+
+    <h3>Objetivos de un mural fotográfico:</h3>
+<p>- Contar una historia visual.</p>
+<p>- Crear una estética ambiental.</p>
+<p>- Representar valores, culturas o identidades.</p>
+<p>- Provocar reflexión o inspiración.</p>
+
+<div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px;">
+<img src="https://i.pinimg.com/736x/1c/13/2b/1c132bd00ba1a93791f707cb457edde2.jpg" style="width:280px; border-radius:12px;" />
+</div>
+
+  <h3>Características:</h3>
+
+<p>- Enfoque temático (paisaje, valores, cultura, emociones).</p>
+<p>- Composición equilibrada.</p>
+<p>- Alta resolución.</p>
+<p>- Armonía de colores y estilo.</p>
+
+<div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px;">
+<img src="C:\Users\CHAVELI\OneDrive\Escritorio\PETERLAANGUILA\Borrador.png" style="width:280px; border-radius:12px;" />
+</div>
+
+    <a href="https://www.canva.com/design/DAG4yUphzH4/uFD6LiId7ZgoDUk-zAp4TA/edit" 
+       target="_blank" style="font-size:1.2rem; color:#0077cc;">
+       Abrir borrador de Mural
+    </a>
+
+    </div>
+
+<div id="info" class="section">
+    <h2>Información y Autores</h2>
+    <h3> Perseverancia </h3>
+
+<p>Duckworth, A. (2016). Grit: The power of passion and perseverance. Scribner.</p>
+<p>Dweck, C. S. (2006). Mindset: The new psychology of success. Random House.</p>
+
+<h3>Fe</h3>
+
+<p>Frankl, V. E. (2006). El hombre en busca de sentido. Herder. (Obra original publicada en 1946)</p>
+<p>James, W. (1902). The varieties of religious experience. Longmans, Green & Co.</p>
+
+<h3>Amor</h3>
+
+<p>Fromm, E. (1956). The art of loving. Harper & Row.</p>
+<p>Nussbaum, M. C. (2001). Upheavals of thought: The intelligence of emotions. Cambridge University Press.</p>
+
+<h3>Amistad</h3>
+
+<p>Aristotle. (1999). Nicomachean ethics (T. Irwin, Trans.). Hackett Publishing.</p>
+<p>Lewis, C. S. (1960). The four loves. Geoffrey Bles.</p>
+
+<h3>Bondad</h3>
+
+<p>Dalai Lama. (1999). Ethics for the new millennium. Riverhead Books.</p>
+<p>Schweitzer, A. (1987). Out of my life and thought: An autobiography. Johns Hopkins University Press. (Obra original publicada en 1933)</p>
+
+<h3>Respeto</h3>
+
+<p>Kant, I. (1998). Groundwork of the metaphysics of morals (M. Gregor, Trans.). Cambridge University Press. (Obra original publicada en 1785)</p>
+<p>Rawls, J. (1971). A theory of justice. Harvard University Press.</p>
+
+<h3>Honestidad</h3>
+
+<p>Bok, S. (1978). Lying: Moral choice in public and private life. Pantheon Books.</p>
+<p>Confucius. (1997). Analects (D. C. Lau, Trans.). Penguin Classics.</p>
+
+<h3>Responsabilidad</h3>
+
+<p>Jonas, H. (1984). The imperative of responsibility: In search of an ethics for the technological age. University of Chicago Press.</p>
+<p>Weber, M. (1946). From Max Weber: Essays in sociology (H. H. Gerth & C. W. Mills, Eds. & Trans.). Oxford University Press.</p>
+
+<h3>Murales fotográficos (referencias sobre fotógrafos clásicos)</h3>
+
+<p>Lange, D. (1966). Dorothea Lange: A photographer’s life, 1895–1965. Museum of Modern Art.</p>
+<p>Salgado, S. (2013). Genesis. Taschen.</p>
+
+</div>
+
+<div id="contacto" class="section">
+    <h2>Contacto</h2>
+    <p>edwardse488@gmail.com</p>
+    <p>jumaryoshiro1987@icloud.com</p>
+    <p>apaucar1122@sabp.edu.pe</p>
+    <p>pchinchay1011@sabp.edu.pe</p>
+    <h2>I.E</h2>
+    <p>https://sabp.edu.pe/</p>
+</div>
+
+
+<script>
+function openSection(id) {
+    document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+}
+function playHover(){
+  const s=document.getElementById('hoverSound');
+  s.currentTime=0;
+  s.play();
+}
+</script>
+
+</body>
+</html>

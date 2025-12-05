@@ -96,6 +96,62 @@
         width: 250px;
         filter: drop-shadow(0px 0px 5px cyan);
     }
+
+
+    /* === MINI-PLAYER (YouTube iframe) esquina inferior izquierda === */
+    .mini-player {
+      position: fixed;
+      left: 16px;
+      bottom: 16px;
+      width: 260px;   /* ancho del mini player */
+      height: 146px;  /* altura 16:9 reducida (. 260x146) */
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+      z-index: 9999;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      transition: transform .18s ease;
+    }
+
+    .mini-player iframe,
+    .mini-player video {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display:block;
+    }
+
+    .mini-player .mini-controls {
+      position: absolute;
+      right: 6px;
+      top: 6px;
+      z-index: 10000;
+      display: flex;
+      gap: 6px;
+    }
+
+    .mini-player .btn {
+      background: rgba(255,255,255,0.9);
+      border: none;
+      padding: 4px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .mini-player.collapsed {
+      transform: translateY(120px); /* oculta parcialmente si collapse */
+      opacity: 0.9;
+    }
+
+    /* Ajuste responsivo para pantallas pequeñas */
+    @media (max-width: 420px) {
+      .mini-player { width: 200px; height: 112px; left: 8px; bottom: 8px; }
+      .music-player audio { width: 200px; }
+    }
+
 </style>
 
 </head>
@@ -104,7 +160,7 @@
 <!-- === REPRODUCTOR DE MÚSICA === -->
 <div class="music-player">
     <audio id="bgMusic" controls loop>
-        <source src="ID3" type="audio/mpeg">
+        <source src="C:\Users\CHAVELI\OneDrive\Escritorio\PETERLAANGUILA\Live.mp3" type="audio/mpeg">
         Tu navegador no soporta audio HTML.
     </audio>
 </div>
@@ -188,7 +244,7 @@
 <p>- Armonía de colores y estilo.</p>
 
 <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px;">
-<img src="https://github.com/Rexdx24/Determinados-Hasta-No-Poder/blob/main/Borrador.png" style="width:280px; border-radius:12px;" />
+<img src="https://drive.google.com/file/d/1hJUE9FdLO2bNAUvRySbuMIRS13Y-ePpK/view?usp=sharing" style="width:280px; border-radius:12px;" />
 </div>
 
     <a href="https://www.canva.com/design/DAG4yUphzH4/uFD6LiId7ZgoDUk-zAp4TA/edit" 
@@ -257,6 +313,103 @@
     <p>https://sabp.edu.pe/</p>
 </div>
 
+<!-- MINI PLAYER (YouTube iframe) -->
+<div id="miniPlayer" class="mini-player" role="region" aria-label="Mini reproductor">
+  <div class="mini-controls" aria-hidden="false">
+    <button class="btn" id="miniMuteBtn" title="Silenciar / activar">Mute</button>
+    <button class="btn" id="miniHideBtn" title="Ocultar mini reproductor">Cerrar</button>
+  </div>
+
+  <!-- YouTube iframe (visible mini-player) -->
+  <iframe id="ytMini"
+    src="https://youtu.be/ETab4HX6lU4?list=RDETab4HX6lU4"
+    allow="autoplay; encrypted-media; picture-in-picture"
+    allowfullscreen
+    title="Mini reproductor"></iframe>
+
+  <!-- Alternativa MP4: si tienes un MP4, descomenta este bloque y sustituye la URL.
+       Nota: deja el iframe comentado si usas video HTML5 para evitar reproducir ambos.
+  <video id="mp4Mini" controls preload="metadata" style="display:none">
+      <source src="https://youtu.be/ETab4HX6lU4?list=RDETab4HX6lU4" type="video/mp4">
+      Tu navegador no soporta video.
+  </video>
+  -->
+</div>
+
+<script>
+/* función para cambiar secciones (mantuve tu lógica) */
+function openSection(id) {
+    document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'block';
+}
+
+/* sonido hover */
+function playHover(){
+  const s=document.getElementById('hoverSound');
+  if (!s) return;
+  s.currentTime=0;
+  s.play().catch(()=>{/* autoplay bloqueado */});
+}
+
+/* MINI PLAYER: botones */
+const mini = document.getElementById('miniPlayer');
+const ytMini = document.getElementById('ytMini');
+const miniHideBtn = document.getElementById('miniHideBtn');
+const miniMuteBtn = document.getElementById('miniMuteBtn');
+
+miniHideBtn.addEventListener('click', () => {
+  // alterna ocultar/mostrar
+  if (mini.classList.contains('collapsed')) {
+    mini.classList.remove('collapsed');
+    miniHideBtn.textContent = 'Cerrar';
+  } else {
+    mini.classList.add('collapsed');
+    miniHideBtn.textContent = 'Abrir';
+  }
+});
+
+/* Mute: para iframe no se puede silenciar directamente desde JS por políticas.
+   En su lugar, si se desea reproducir sin sonido por defecto, se puede usar `&mute=1`
+   en la URL. Aquí alternamos reemplazando la src (simple). */
+let muted = false;
+miniMuteBtn.addEventListener('click', () => {
+  muted = !muted;
+  let src = ytMini.getAttribute('src');
+  if (muted) {
+    if (!src.includes('mute=1') && !src.includes('muted=1')) {
+      src = src + (src.includes('?') ? '&' : '?') + 'mute=1';
+      ytMini.setAttribute('src', src);
+    }
+    miniMuteBtn.textContent = 'Unmute';
+  } else {
+    // quitar mute=1 de la URL (simple replace)
+    src = src.replace('&mute=1','').replace('?mute=1','');
+    ytMini.setAttribute('src', src);
+    miniMuteBtn.textContent = 'Mute';
+  }
+});
+
+/* Evitar que el mini-player tape interacciones importantes en móviles:
+   si la pantalla es muy pequeña, reducimos el tamaño y lo movemos ligeramente.
+*/
+function adjustMiniForViewport(){
+  if (window.innerWidth < 420) {
+    mini.style.width = '200px';
+    mini.style.height = '112px';
+    mini.style.left = '8px';
+    mini.style.bottom = '8px';
+  } else {
+    mini.style.width = '';
+    mini.style.height = '';
+    mini.style.left = '';
+    mini.style.bottom = '';
+  }
+}
+window.addEventListener('resize', adjustMiniForViewport);
+adjustMiniForViewport();
+
+</script>
 
 <script>
 function openSection(id) {
@@ -272,8 +425,3 @@ function playHover(){
 
 </body>
 </html>
-
-
-
-
-
